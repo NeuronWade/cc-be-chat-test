@@ -1,6 +1,6 @@
 ## Documentation
 ### START
-
+`node index.js server | cli`
 
 ### Modules
 
