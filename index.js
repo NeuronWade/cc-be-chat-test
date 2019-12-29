@@ -1,34 +1,23 @@
-const inquirer = require('inquirer');
-
-const run = async () => {
-  const { name } = await askName();
-  while (true) {
-    const answers = await askChat();
-    const { message } = answers;
-    console.log(`${name}: `, message);
-  }
-};
-
-const askChat = () => {
-  const questions = [
-    {
-      name: "message",
-      type: "input",
-      message: "Enter chat message:"
+function start() {
+    var args = process.argv.splice(2)
+    var startType = args[0]
+    if (startType == null) {
+        return
     }
-  ];
-  return inquirer.prompt(questions);
-};
 
-const askName = () => {
-  const questions = [
-    {
-      name: "name",
-      type: "input",
-      message: "Enter your name:"
+    if (startType == 'server') {
+        var ChatServer = require('./src/server.js');
+        var Server = new ChatServer();
+        Server.run();
+    } else if (startType == 'cli') {
+      const Client = require('./src/client.js');
+      var client = new Client();
+      client.run();
+      process.on('SIGINT', function () {
+          client.close();
+          process.exit();
+      });
     }
-  ];
-  return inquirer.prompt(questions);
-};
+}
 
-run();
+start();
