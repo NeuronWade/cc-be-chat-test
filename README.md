@@ -1,13 +1,17 @@
 ## Documentation
-###START
-`node index.js server | cli`
+### START
 
-###Modules
-####User
+
+### Modules
+
+#### User
 Manage Users and handle message through the `UserController`
-####Message
+
+#### Message
 Cache chat messages via `MessageController`
-####Wordfilter
+
+#### Wordfilter
 Base on DFA,  save tree nodes through hash structure
-####Unit Test
+
+#### Unit Test
 use `ava` for testing
